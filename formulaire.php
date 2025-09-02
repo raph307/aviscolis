@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Votre Avis - La Poste</title>
@@ -12,15 +13,24 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #0f1729 0%, #1e3a8a 50%, #312e81 100%);
+            color: white;
+            overflow-x: hidden;
             min-height: 100vh;
+            font-weight: 400;
+            letter-spacing: -0.025em;
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 160px 20px 180px 20px;
-            position: relative;
-            overflow-x: hidden;
         }
 
         /* Effets néon de fond */
@@ -31,7 +41,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 50%);
             animation: pulse 6s ease-in-out infinite;
             z-index: 0;
         }
@@ -42,20 +52,22 @@
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 32px;
             box-shadow: 
-                0 32px 64px rgba(0, 0, 0, 0.25),
-                0 0 0 1px rgba(251, 191, 36, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
-            max-width: 520px;
-            width: 100%;
-            overflow: hidden;
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+                0 40px 80px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(255, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            animation: subtleGlow 3s ease-in-out infinite alternate;
             position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            width: 90%;
             z-index: 1;
+            margin: 6rem auto;
         }
 
         @keyframes slideUp {
@@ -70,12 +82,14 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #0f1729 0%, #1e3a8a 70%, #312e81 100%);
+            background: linear-gradient(135deg, rgba(15, 23, 41, 0.95) 0%, rgba(30, 58, 138, 0.95) 70%, rgba(49, 46, 129, 0.95) 100%);
             color: white;
-            padding: 40px 30px;
+            padding: 50px 40px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Effet néon dans l'header */
@@ -110,6 +124,8 @@
             border-radius: 10px;
         }
 
+        
+
         .header h1 {
             font-size: 28px;
             font-weight: 800;
@@ -122,12 +138,12 @@
             letter-spacing: 1px;
         }
 
-        .logissimo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            margin-top: 20px;
+    
+        
+
+        @keyframes goldenPulse {
+            0%, 100% { opacity: 0.8; transform: scaleX(1); }
+            50% { opacity: 1; transform: scaleX(1.1); }
         }
 
         .logo-logissimo {
@@ -137,14 +153,47 @@
             flex-shrink: 0;
             border-radius: 10px;
         }
+        .header-separator {
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #fbbf24, #f59e0b, #fbbf24, transparent);
+            border-radius: 2px;
+            box-shadow: 
+                0 0 10px rgba(251, 191, 36, 0.6),
+                0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: goldenPulse 2s ease-in-out infinite;
+            margin: 25px auto;
+        }
+
+        .title-separator {
+            width: 250px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4), transparent);
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        .logissimo-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tagline-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
         .tagline {
             font-size: 13px;
             opacity: 0.9;
             font-style: italic;
             color: rgba(255, 255, 255, 0.8);
-            flex: 1;
             text-align: left;
+            margin: 0;
         }
 
         .form-container {
@@ -198,13 +247,17 @@
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 16px 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 16px;
+            padding: 18px 24px;
+            border: 1.5px solid rgba(15, 23, 41, 0.15);
+            border-radius: 20px;
             font-size: 15px;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            background: #ffffff;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
         }
@@ -236,6 +289,22 @@
         @keyframes gentleShine {
             0% { left: -100%; }
             100% { left: 100%; }
+        }
+        @keyframes subtleGlow {
+            0% {
+                box-shadow: 
+                    0 40px 80px rgba(0, 0, 0, 0.3),
+                    0 0 20px rgba(255, 255, 255, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                    inset 0 0 20px rgba(255, 255, 255, 0.05);
+            }
+            100% {
+                box-shadow: 
+                    0 40px 80px rgba(0, 0, 0, 0.3),
+                    0 0 40px rgba(255, 255, 255, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                    inset 0 0 30px rgba(255, 255, 255, 0.08);
+            }
         }
 
         /* Validation verte */
@@ -321,21 +390,37 @@
 
         .star {
             cursor: pointer;
-            font-size: 28px;
-            color: #cbd5e1;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 32px;
+            color: #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            position: relative;
+        }
+
+        .star::before {
+            content: '★';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+        }
+
+        .star:hover::before,
+        .star.active::before {
+            opacity: 1;
         }
 
         .star:hover,
         .star.active {
+            transform: scale(1.15) rotate(5deg);
             color: transparent;
-            background: linear-gradient(135deg, #fbbf24 0%, #84cc16 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            transform: scale(1.2);
-            filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
         }
 
         .quartier-section {
@@ -595,19 +680,21 @@
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #fbbf24 100%);
             color: white;
             border: none;
-            padding: 18px;
-            border-radius: 16px;
-            font-size: 17px;
-            font-weight: 700;
+            padding: 22px 32px;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 
-                0 12px 24px rgba(30, 58, 138, 0.3),
-                0 0 0 1px rgba(251, 191, 36, 0.2);
+                0 20px 40px rgba(30, 58, 138, 0.4),
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
 
         .submit-btn::before {
@@ -708,44 +795,240 @@
         }
 
         @media (max-width: 480px) {
+            
+            .header-separator {
+                width: 80px;
+                height: 2px;
+                margin: 20px auto;
+            }
+          .title-separator {
+                width: 200px;
+                margin-bottom: 6px;
+            }
+            
+            .logissimo-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .tagline-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tagline {
+                text-align: center;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            .main-container {
+                padding: 1rem;
+            }
+            
+            .container {
+                max-width: none;
+                width: 95%;
+                margin: 1rem auto;
+                border-radius: 16px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 22px;
+            }
+            
+            .logo-laposte {
+                width: 10rem;
+            }
+            
+            .logo-logissimo {
+                width: 80px;
+            }
+            
+            .form-container {
+                padding: 25px 20px;
+            }
+            
             .rating-group {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            .rating-item {
+                padding: 20px 15px;
             }
             
             .tip-options {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .container {
-                margin: 10px;
-            }
-
             .logos-container {
                 flex-direction: column;
                 gap: 15px;
             }
+        
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                width: 98%;
+                margin: 0.5rem auto;
+            }
+            
+            .main-container {
+                padding: 0.5rem;
+            }
+            
+            .form-container {
+                padding: 20px 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+        }
+        .thank-you-panel {
+            display: none;
+            text-align: center;
+            padding: 60px 30px;
+        }
+
+        .thank-you-title {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.6);
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 1s ease;
+            letter-spacing: 2px;
+            animation: goldShine 3s ease-in-out infinite;
+        }
+
+        .thank-you-title:hover {
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(30, 58, 138, 0.6);
+            transform: scale(1.05);
+        }
+
+        @keyframes goldShine {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .thank-you-message {
+            font-size: 18px;
+            color: #0f1729;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* LOADER PAGE */
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(45deg, #ffffff 0%, #f8faff 50%, #1e3a8a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        
+        .loader-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+
+        .loader {
+            width: 120px;
+            height: 120px;
+            border: 3px solid rgba(30, 58, 138, 0.1);
+            border-top: 3px solid #1e3a8a;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: relative;
+        }
+
+        .loader::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid rgba(30, 58, 138, 0.1);
+            border-left: 2px solid #1e3a8a;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+
+        .loader-text {
+            margin-top: 2rem;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e3a8a;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
 <body>
+    <!-- LOADER -->
+    <div class="loader-container" id="loader">
+        <div class="loader"></div>
+        <div class="loader-text">Chargement des paquets...</div>
+    </div>
     <div class="container">
         <div class="header">
             <div class="logos-container">
-                <img src="LOGO_LAPOSTE.png" alt="La Poste" class="logo-laposte">
+                    <img src="LOGO_LAPOSTE.png" alt="La Poste" class="logo-laposte">
+                </div>
+                
+                <div class="header-separator"></div>
+                
+                <h1>Votre Avis Compte !</h1>
+                                
+                <div class="logissimo-container">
+                    <div class="tagline-container">
+                        <div class="title-separator"></div>
+                        <p class="tagline">La puissance logistique de La Poste au service de votre Supply Chain</p>
+                    </div>
+                    <img src="LOGO_LOGISSIMO.avif" alt="Logissimo" class="logo-logissimo">
+                </div>
             </div>
-            
-            <h1>Votre Avis Compte !</h1>
-            
-            <div class="logissimo-container">
-                <p class="tagline">La puissance logistique de La Poste au service de votre Supply Chain</p>
-                <img src="LOGO_LOGISSIMO.avif" alt="Logissimo" class="logo-logissimo">
-            </div>
-        </div>
 
         <div class="form-container">
             <div class="privacy-notice">
-                <strong>Confidentialité :</strong> Ce formulaire peut être rempli de manière anonyme ou partiellement nominative (prénom, nom, rue ou quartier seulement). Vos données restent confidentielles.
+                <strong>Confidentialité :</strong> Ce formulaire peut être rempli de manière anonyme ou partiellement nominative (prénom et/ou nom, numéro de rue ou rue ou quartier seulement). Vos données restent confidentielles.
             </div>
             
             <form id="feedbackForm" action="submit.php" method="POST">
@@ -753,13 +1036,17 @@
                     <h2 class="section-title">Informations Client</h2>
                     
                     <div class="form-group">
-                        <label for="nom">Nom & Prénom *</label>
-                        <input type="text" id="nom" name="nom" placeholder="Votre nom complet" required>
+                        <label for="nom">Nom & Prénom</label>
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom complet">
                     </div>
 
                     <div class="form-group">
-                        <label for="adresse">Adresse de livraison *</label>
-                        <input type="text" id="adresse" name="adresse" placeholder="Votre adresse complète" required>
+                        <label for="adresse">Adresse de livraison</label>
+                        <input type="text" id="adresse" name="adresse" placeholder="Votre adresse complète">
+                    </div>
+                    <div class="form-group">
+                        <label for="date_reception">Date de réception du colis</label>
+                        <input type="date" id="date_reception" name="date_reception">
                     </div>
                 </div>
 
@@ -767,11 +1054,12 @@
                     <h2 class="section-title">Votre Quartier</h2>
                     
                     <div class="form-group quartier-select">
-                        <label for="quartier">Sélectionnez votre quartier *</label>
-                        <select id="quartier" name="quartier" required>
+                        <label for="quartier">Sélectionnez votre quartier</label>
+                        <select id="quartier" name="quartier">
                             <option value="">-- Choisissez votre quartier --</option>
                             <option value="jardin-mail">Quartier Jardin Mail / Quinconce / Louis Gain</option>
                             <option value="pasteur">Quartier Pasteur</option>
+                            <option value="pont-de-ce">Quartier Pont de cé</option>
                         </select>
                     </div>
                     
@@ -862,6 +1150,25 @@
     </div>
 
     <script>
+        // LOADER - Gestion automatique
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            
+            // Forcer l'affichage du loader
+            loader.style.display = 'flex';
+            
+            // Masquer le loader après 3 secondes
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                
+                // Supprimer complètement après l'animation
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+                
+            }, 3000);
+        });
+
         // Validation des champs
         function validateField(field) {
             const formGroup = field.closest('.form-group');
@@ -886,7 +1193,8 @@
             
             const livreurs = {
                 'jardin-mail': 'Raphaël',
-                'pasteur': 'Tanguy'
+                'pasteur': 'Carinne',
+                'pont-de-ce': 'Baptiste'
             };
             
             if (this.value && livreurs[this.value]) {
@@ -960,6 +1268,45 @@
         }
 
         // Gestion des pourboires avec confetti
+
+        // Fonction pour créer des confetti améliorée
+        function createConfetti(type = 'normal') {
+            const colors = type === 'tip' ? 
+                ['#fbbf24', '#f59e0b', '#eab308', '#facc15'] : 
+                ['#fbbf24', '#1e3a8a', '#10b981', '#f59e0b'];
+            
+            const confettiCount = type === 'tip' ? 80 : 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                
+                if (type === 'tip') {
+                    confetti.style.width = '8px';
+                    confetti.style.height = '8px';
+                    confetti.innerHTML = '💰';
+                    confetti.style.fontSize = '12px';
+                    confetti.style.backgroundColor = 'transparent';
+                }
+                
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                }
+                
+                document.body.appendChild(confetti);
+                
+                // Supprimer le confetti après l'animation
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.parentNode.removeChild(confetti);
+                    }
+                }, 4000);
+            }
+        }
         let hasSelectedTip = false;
         
         document.querySelectorAll('.tip-btn').forEach(btn => {
@@ -967,7 +1314,7 @@
                 document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('selected'));
                 btn.classList.add('selected');
                 
-                document.getElementById('pourboire').value = btn.dataset.tip; // AJOUT ICI
+                document.getElementById('pourboire').value = btn.dataset.tip;
                 
                 const tipAmountSection = document.getElementById('tipAmountSection');
                 if (btn.dataset.tip === 'non') {
@@ -976,7 +1323,7 @@
                 } else {
                     tipAmountSection.classList.remove('show');
                     if (btn.dataset.tip === 'oui' && !hasSelectedTip) {
-                        createConfetti();
+                        createConfetti('tip');
                         hasSelectedTip = true;
                     }
                 }
@@ -992,16 +1339,16 @@
                     const customAmount = prompt('Montant du pourboire (€):');
                     if (customAmount && customAmount > 0) {
                         option.textContent = customAmount + '€';
-                        document.getElementById('pourboire').value = customAmount + '€'; // AJOUT ICI
+                        document.getElementById('pourboire').value = customAmount + '€';
                         if (!hasSelectedTip) {
-                            createConfetti();
+                            createConfetti('tip');
                             hasSelectedTip = true;
                         }
                     }
                 } else {
-                    document.getElementById('pourboire').value = option.dataset.tip; // AJOUT ICI
+                    document.getElementById('pourboire').value = option.dataset.tip;
                     if (option.dataset.tip !== 'none' && !hasSelectedTip) {
-                        createConfetti();
+                        createConfetti('tip');
                         hasSelectedTip = true;
                     }
                 }
@@ -1035,6 +1382,29 @@
             btn.disabled = true;
             
             // Le formulaire va maintenant se soumettre vers formulaire.php
+        });
+
+        // Navigation avec la touche Entrée
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && e.target.type !== 'submit') {
+                e.preventDefault();
+                
+                // Trouver tous les champs du formulaire
+                const formElements = Array.from(document.querySelectorAll('input:not([type="hidden"]), select, textarea'));
+                const currentIndex = formElements.indexOf(e.target);
+                
+                // Passer au champ suivant
+                if (currentIndex !== -1 && currentIndex < formElements.length - 1) {
+                    const nextElement = formElements[currentIndex + 1];
+                    nextElement.focus();
+                    
+                    // Effet visuel sur le champ suivant
+                    nextElement.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        nextElement.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            }
         });
     </script>
 </body>
